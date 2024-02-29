@@ -1,0 +1,15 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody id="list_customers">
+      {% for client in clients %}
+        {% include 'item_customer.html' %}
+      {% endfor %}
+    </tbody>
+  </table>
