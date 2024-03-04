@@ -1,10 +1,14 @@
-<tr>
+<tr id="client-{{client.id}}">
     <th scope="row">{{client.id}}</th>
     <td>{{client.name}}</td>
     <td>{{client.email}}</td>
     <td>
         <button class="btn btn-primary" c-get="{{ url_for('customer.edit_customer',
             customer_id=client.id) }}" c-target="#form-client">Edit</button>
+
+            <button class="btn btn-secondary" c-get="{{ url_for('customer.view_customer',
+            customer_id=client.id) }}" c-target="#view-client"
+            data-bs-toggle="modal" data-bs-target="#exampleModal">View</button>
             
         <button class="btn btn-danger" c-delete="{{ url_for('customer.delete_customer',
             customer_id=client.id) }}" c-remove-closest="tr">Delete</button>

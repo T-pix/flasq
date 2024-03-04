@@ -7,7 +7,11 @@
 
     method="{% if client %}PUT{% else %}POST{% endif %}"
 
-    c-append="#list_customers">
+    {% if client %}
+      c-swap="#client-{{client.id}}"
+    {% else %}
+      c-append="#list_customers">
+    {% endif %}
 
     <div class="mb-3">
       <label class="form-label">Name</label>

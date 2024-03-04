@@ -26,8 +26,9 @@ def form_customer():
 
 
 @customer_route.route('/<int:customer_id>')
-def datail_customer(customer_id):
-    pass
+def view_customer(customer_id):
+    view_client = list(filter(lambda c: c['id'] == customer_id,Clients))[0]
+    return render_template('view_customer.html',client=view_client)
 
 
 @customer_route.route('/<int:customer_id>/edit')
@@ -41,7 +42,18 @@ def edit_customer(customer_id):
 
 @customer_route.route('/<int:customer_id>/update',methods=['PUT'])
 def update_customer(customer_id):
-    pass
+    update_client = None
+
+    data = request.json
+
+    for c in Clients:
+        if c['id'] == customer_id:
+            c['name'] = data['name']
+            c['email'] = data['email']
+
+            update_client = c 
+
+    return render_template('item_customer.html',client=update_client)           
 
 
 @customer_route.route('/<int:customer_id>/delete',methods=['DELETE'])
